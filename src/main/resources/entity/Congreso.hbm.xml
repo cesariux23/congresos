@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/05/2017 05:19:03 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Congreso" table="congreso" schema="dbo" catalog="EventosUxDB" optimistic-lock="version">
+        <id name="idCongreso" type="int">
+            <column name="id_congreso" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="100" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="100" not-null="true" />
+        </property>
+        <property name="clave" type="string">
+            <column name="clave" length="2" not-null="true" />
+        </property>
+        <property name="numero" type="int">
+            <column name="numero" not-null="true" />
+        </property>
+        <property name="estatus" type="boolean">
+            <column name="estatus" not-null="true" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="fecha" length="10" not-null="true" />
+        </property>
+        <set name="aspirantes" table="aspirante" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_congreso" not-null="true" />
+            </key>
+            <one-to-many class="entity.Aspirante" />
+        </set>
+        <set name="temas" table="tema" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_congreso" not-null="true" />
+            </key>
+            <one-to-many class="entity.Tema" />
+        </set>
+        <set name="categoriaInscripcions" table="categoria_inscripcion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_congreso" not-null="true" />
+            </key>
+            <one-to-many class="entity.CategoriaInscripcion" />
+        </set>
+    </class>
+</hibernate-mapping>

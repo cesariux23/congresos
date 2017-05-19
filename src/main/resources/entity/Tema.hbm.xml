@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/05/2017 05:19:03 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Tema" table="tema" schema="dbo" catalog="EventosUxDB" optimistic-lock="version">
+        <id name="idTema" type="int">
+            <column name="id_tema" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="congreso" class="entity.Congreso" fetch="select">
+            <column name="id_congreso" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="50" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="50" not-null="true" />
+        </property>
+        <property name="cupo" type="java.lang.Integer">
+            <column name="cupo" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
