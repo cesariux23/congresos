@@ -1,22 +1,38 @@
+
+
+<%@page import="modelos.conexion"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib  prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ include file = "../../layout/header.jsp" %>
-<section class="container">
-    <h1>Registro de aspirante</h1>
-    <form:form method="post" commandName="aspirante">
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*"  %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta  charset="UTF-8">
+        <title>JSP Page</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <h2 class="text-center">Registro de Aspirante</h2>
+        <div class="container">
+            <form:form method="post" commandName="aspirante">
             
             <div class="panel panel-info">
                 <div class="panel-heading"><strong>Congreso</strong></div>
             <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-8">
+                 
+                 <div class="col-lg-8">
                  <div class="form-group">
-                    <form:label path="idCongreso">Nombre de Congreso*</form:label> 
-                   <form:select path="idCongreso" name="idCongreso"cssClass="form-control">
-                        <form:options items="${congresos}" itemValue="idCongreso" itemLabel="nombre"/>
+                    <form:label path="id_congreso">Nombre de Congreso*</form:label> 
+                   <form:select path="id_congreso" name="id_congreso"cssClass="form-control" tabindex="1">
+                        <form:option value="0">Elegir.....</form:option> 
+                        <c:forEach items="${dato2}" var="datos2">
+                        <form:option value="${datos2.id_congreso}">${datos2.nombre}</form:option>
+                        </c:forEach> 
                      </form:select>
                     </div>
                     </div>
-                </div>
+                
             </div>
             </div>
            
@@ -29,24 +45,18 @@
                     <form:label  path="nombre">Nombre*</form:label> 
                     <form:input path="nombre" name = "nombre" cssClass="form-control" placeholder="Nombre Completo" />
                 </div>
-                </div>
-            
-                
-            
-                
+                </div> 
                 <div class="col-lg-4">
                 <div class="form-group">
-                    <form:label path="apellidoPaterno">Apellido Paterno*</form:label> 
-                    <form:input path="apellidoPaterno" name = "apellidoPaterno"cssClass="form-control" />
+                    <form:label path="apellido_paterno">Apellido Paterno*</form:label> 
+                    <form:input path="apellido_paterno" name = "apellido_paterno"cssClass="form-control" />
                 </div> 
                 </div>
                 
-            
-                
                 <div class="col-lg-4">
                 <div class="form-group">
-                    <form:label path="apellidoMaterno">Apellido Materno*</form:label> 
-                    <form:input path="apellidoMaterno" name = "apellidoMaterno"cssClass="form-control" />
+                    <form:label path="apellido_materno">Apellido Materno*</form:label> 
+                    <form:input path="apellido_materno" name = "apellido_materno"cssClass="form-control" />
                 </div>
                 </div>
             </div>
@@ -54,7 +64,7 @@
                 
                     
             <div class="panel panel-info">
-                <div class="panel-heading"><strong>Dirección</strong></div>
+                <div class="panel-heading"><strong>DirecciÃ³n</strong></div>
             <div class="panel-body">
             
                 
@@ -69,7 +79,7 @@
                 
                 <div class="col-lg-2">
                 <div class="form-group">
-                    <form:label path="numero">Número</form:label> 
+                    <form:label path="numero">NÃºmero</form:label> 
                     <form:input path="numero"name = "numero" cssClass="form-control" />
                 </div>
                 </div>
@@ -82,7 +92,6 @@
                     <form:input path="colonia" name = "colonia"cssClass="form-control" />
                  </div>
                  </div>
-                
                     
                 
                 <div class="col-lg-2">
@@ -93,8 +102,8 @@
                 </div>
                 <div class="col-lg-4">
                 <div class="form-group">
-                    <form:label path="idMunicipio">Municipio*</form:label> 
-                    <form:select path="idMunicipio" name="idMunicipio"cssClass="form-control">
+                    <form:label path="id_municipio">Municipio*</form:label> 
+                    <form:select path="id_municipio" name="id_municipio"cssClass="form-control">
                          <form:option value="0">Elegir.....</form:option>
                          <c:forEach items="${dato1}" var="datos1">
                          <form:option value="${datos1.id_municipio}">${datos1.nombre}</form:option>  
@@ -102,9 +111,6 @@
                     </form:select>
                 </div>
                 </div>
-                
-        
-            
             <div class="col-lg-4">
             <div class="form-group">    
                 <form:label path="procedencia">Lugar de procedencia</form:label> 
@@ -155,8 +161,8 @@
                 
                 <div class="col-lg-6">
                 <div class="form-group">
-                    <form:label path="idCategoria">Categoria*</form:label>
-                        <form:select path="idCategoria" name="idCategoria"cssClass="form-control">
+                    <form:label path="id_categoria">Categoria*</form:label>
+                        <form:select path="id_categoria" name="id_categoria"cssClass="form-control">
                             <form:option value="0">Elegir.....</form:option> 
                             <c:forEach items="${dato3}" var="datos3">
                             <form:option value="${datos3.id_categoria}">${datos3.nombre}</form:option>
@@ -169,8 +175,8 @@
                  
                 <div class="col-lg-6">
                 <div class="form-group">
-                    <form:label path="idProfesion">Profesión*</form:label> 
-                        <form:select path="idProfesion" name="idProfesion"cssClass="form-control">
+                    <form:label path="id_profesion">ProfesiÃ³n*</form:label> 
+                        <form:select path="id_profesion" name="id_profesion"cssClass="form-control">
                             <form:option value="0">Elegir.....</form:option> 
                             <c:forEach items="${dato4}" var="datos4">
                             <form:option value="${datos4.id_profesion}">${datos4.nombre}</form:option>
@@ -212,7 +218,7 @@
                     <div class="checkbox">
                 <label>
                     <input type="checkbox" value="">
-                    ¿Ha tomado algun congreso con nosotros?
+                    Â¿Ha tomado algun congreso con nosotros?
                 </label>
             </div>
             
@@ -231,6 +237,6 @@
                  <hr />
                 <input type="submit" value="Enviar" class="btn btn-primary btn-lg btn-block" />
             </form:form>
-    
-</section>
-<%@ include file = "../../layout/footer.jsp" %>
+        </div>
+    </body>
+</html>

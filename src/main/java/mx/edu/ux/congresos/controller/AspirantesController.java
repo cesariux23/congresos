@@ -3,6 +3,7 @@ package mx.edu.ux.congresos.controller;
 import java.util.List;
 import mx.edu.ux.congresos.model.Aspirante;
 import mx.edu.ux.congresos.service.EstadoService;
+import mx.edu.ux.congresos.service.CongresoService;
 import mx.edu.ux.congresos.service.AspiranteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,15 +17,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class AspirantesController {
     
     @Autowired
-    EstadoService service;
+    EstadoService serviceEstado;
     @Autowired
     AspiranteService aspiranteService;
+    @Autowired
+    CongresoService congresoservice;
  
     @RequestMapping("/aspirantes")
     public String index(Model model) {
-        List estados = service.findAllEstados();
         List aspirantes = aspiranteService.findAllAspirantes();
-	model.addAttribute("estados", estados);
         model.addAttribute("aspirantes", aspirantes);
         return "aspirantes/index";   
     }
@@ -40,6 +41,10 @@ public class AspirantesController {
     @RequestMapping("/aspirantes/registro")
     public String register(Model model) {
         Aspirante aspirante = new Aspirante();
+        List estados = serviceEstado.findAllEstados();
+        List congresos = congresoservice.findAllCongresos();
+        model.addAttribute("congresos", congresos);
+        model.addAttribute("estados", estados);
         model.addAttribute("aspirante", aspirante);
         return "aspirantes/form";   
     }

@@ -12,7 +12,7 @@ import mx.edu.ux.congresos.model.Estado;
 public interface EstadoService {
     Estado findById(int id);
     
-    void saveEstado(Estado employee);
+    void saveEstado(Estado estado);
  
     List findAllEstados(); 
 }

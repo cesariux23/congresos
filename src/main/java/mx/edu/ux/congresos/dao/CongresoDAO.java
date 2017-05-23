@@ -6,12 +6,14 @@
 package mx.edu.ux.congresos.dao;
 
 import java.util.List;
-import mx.edu.ux.congresos.model.Estado;
+import mx.edu.ux.congresos.model.Congreso;
 
-public interface EstadoDAO {
-    Estado findById(int id);
+public interface CongresoDAO {
     
-    void saveEstado(Estado estado);
+    Congreso findById(int id);
+    
+    void saveCongreso(Congreso congreso);
  
-    List findAllEstados(); 
+    List findAllCongresos(); 
+    
 }

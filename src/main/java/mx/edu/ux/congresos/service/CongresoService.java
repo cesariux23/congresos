@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mx.edu.ux.congresos.dao;
+package mx.edu.ux.congresos.service;
 
 import java.util.List;
-import mx.edu.ux.congresos.model.Estado;
 
-public interface EstadoDAO {
-    Estado findById(int id);
+import mx.edu.ux.congresos.model.Congreso;
+
+public interface CongresoService {
+    Congreso findById(int id);
     
-    void saveEstado(Estado estado);
+    void saveCongreso(Congreso congreso);
  
-    List findAllEstados(); 
+    List findAllCongresos(); 
 }
