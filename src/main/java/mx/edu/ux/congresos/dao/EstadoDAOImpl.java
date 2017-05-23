@@ -8,8 +8,6 @@ package mx.edu.ux.congresos.dao;
 import java.util.List;
 import mx.edu.ux.congresos.model.Estado;
 import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 
@@ -32,6 +30,4 @@ public class EstadoDAOImpl extends AbstractDAO<Integer, Estado> implements Estad
 		Criteria criteria = createEntityCriteria();
         return (List<Estado>) criteria.list();
 	}
-
-
 }
