@@ -34,6 +34,7 @@
                         <ul class="nav navbar-nav">
                             <li><a href="<c:url value = "/congresos/"/>">Congresos</a></li>
                             <li><a href="<c:url value = "/aspirantes/"/>">Aspirantes</a></li>
+                            <li><a href="<c:url value = "/facturas/"/>">Facturas</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
