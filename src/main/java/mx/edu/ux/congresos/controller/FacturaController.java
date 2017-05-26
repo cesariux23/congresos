@@ -36,6 +36,17 @@ public class FacturaController {
          //se regresa la vista
         return "facturas/index";
     }
+    @RequestMapping("/facturas/lista")
+     //funcion encargada (metodo GET)
+    
+    public String ListaFacturas(Model model) {
+        //se recupera la lista de congresos mediante el metodo find all del service
+        List facturas = facturaservice.findAllFactura();
+        //se agrega como atributo de la vista
+        model.addAttribute("facturas", facturas);
+         //se regresa la vista
+        return "facturas/ListaFacturas";
+    }
     
     //ruta para el detalle
     //se envia el ID del congreso como parte de la ruta
@@ -52,7 +63,7 @@ public class FacturaController {
     }
     
     //ruta para el registro de congresos
-    @RequestMapping("/factura/registro")
+    @RequestMapping("/facturas/registro")
     public String register(Model model) {
         //se crea un congreso nuevo
         Factura factura = new Factura();

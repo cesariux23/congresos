@@ -254,7 +254,7 @@ public class Factura implements Serializable {
 
     @Override
     public String toString() {
-        return "congresos2.entity.Factura[ idFactura=" + idFactura + " ]";
+        return "congresos2.entity.Factura[ idFactura="+ idFactura + " ]";
     }
     
 }
