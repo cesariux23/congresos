@@ -1,23 +1,25 @@
 <%@ include file = "../../layout/header.jsp" %>
 <section class="container">
-    <h1>Congresos</h1>
-    <a href="<c:url value = "/congresos/registro"/>" class="btn btn-primary">Registrar</a>
+    <h1 class="text-center">Congresos</h1>
+   
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>congreso</th>
-                <th>Acciones</th>
+                <th class="text-center">LISTA</th>
+                <th class="text-center">ALTAS</th>
+                <th class="text-center">BAJAS</th>
+                <th class="text-center">MODIFICAR</th>
             </tr>
         </thead>
         <tbody>
-            <c:forEach items="${congresos}" var="congreso">
-                <tr>
-                    <td><c:out value="${congreso.idCongreso}" /></td>
-                    <td><c:out value="${congreso.nombre}" /></td>
-                    <td><a href = "<c:url value = "/congresos/"/><c:out value="${congreso.idCongreso}"/>" class="btn btn-default">Detalles</a></td>
+            
+                <tr class="text-center">
+                    <td><a href="<c:url value = "/congresos/lista"/>" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-list"></span></a></td>
+                    <td><a href="<c:url value = "/congresos/registro"/>" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-ok"></span></a></td>
+                    <td><a href = "<c:url value = "/congresos/bajas"/>" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-sort-by-attributes"></span></a></td>
+                    <td><a href = "<c:url value = "/congresos/modificar"/>" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-sort"></span></a></td>
                 </tr>
-            </c:forEach>
+           
         </tbody>
     </table>
 </section>

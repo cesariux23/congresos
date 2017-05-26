@@ -40,6 +40,16 @@ public class CongresoController {
         //se regresa la vista
         return "congresos/index";   
     }
+    @RequestMapping("/congresos/lista")
+    //funcion encargada (metodo GET)
+    public String ListaCongresos(Model model) {
+        //se recupera la lista de congresos mediante el metodo find all del service
+        List congresos = congresoservice.findAllCongresos();
+        //se agrega como atributo de la vista
+        model.addAttribute("congresos", congresos);
+        //se regresa la vista
+        return "congresos/ListaCongresos";   
+    }
     
     
     //ruta para el detalle
