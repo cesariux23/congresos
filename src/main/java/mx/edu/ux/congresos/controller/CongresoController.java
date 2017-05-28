@@ -74,4 +74,14 @@ public class CongresoController {
         //Se regresa la vista
         return "congresos/form";   
     }
+    
+    @RequestMapping("/congresos/{id}/bajas")
+    public String bajas(Model model, @PathVariable int id) {
+        //se busca por ID
+        Congreso congreso = congresoservice.findById(id);
+        // se envia el objeto recuperado a la vista
+        model.addAttribute("congreso", congreso);
+        // se regresa la vista
+        return "congresos/bajas";   
+    }
 }
