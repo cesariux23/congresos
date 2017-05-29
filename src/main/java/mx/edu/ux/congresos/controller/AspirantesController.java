@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class AspirantesController {
     
     @Autowired
-    EstadoService serviceEstado;
+    EstadoService estadoService;
     @Autowired
     AspiranteService aspiranteService;
     @Autowired
@@ -73,13 +73,13 @@ public class AspirantesController {
     @RequestMapping("/aspirantes/registro")
     public String register(Model model) {
         Aspirante aspirante = new Aspirante();
-        List estados = serviceEstado.findAllEstados();
+        List estados = estadoService.findAllEstados();
         List congresos = congresoservice.findAllCongresos();
         List categoriaInscripcion = categoriaInscripcionservice.findAllCategoriaInscripcion();
         List costos = costoservice.findAllCosto();
         List factura = facturaservice.findAllFactura();
         List mesas = mesasservice.findAllMesas();
-        Estado edo= serviceEstado.findById(aspirante.getEstado());
+        Estado edo= estadoService.findById(aspirante.getEstado());
         List municipios = new  ArrayList(edo.getMunicipioCollection());
         List profesion = profesionservice.findAllProfesion();
         List temas = temaservice.findAllTema();

@@ -81,7 +81,7 @@
                 <div class="col-lg-4">
                     <div class="form-group">
                         <form:label path="estado">estado*</form:label> 
-                        <form:select path="estado" name="estado" cssClass="form-control">
+                        <form:select path="estado" name="estado" cssClass="form-control estado" id="edo1">
                             <form:option value="0" label="--- Seleccione ---"/>
                             <form:options items="${estados}" itemValue="idEstado" itemLabel="nombre"/>
                         </form:select>
@@ -91,7 +91,7 @@
                 <div class="col-lg-4">
                     <div class="form-group">
                         <form:label path="idMunicipio">Municipio*</form:label> 
-                        <form:select path="idMunicipio" name="idMunicipio" cssClass="form-control">
+                        <form:select path="idMunicipio" name="idMunicipio" cssClass="form-control" id="municipios_edo1">
                             <form:option value="0" label="--- Seleccione ---"/>
                             <form:options items="${municipios}" itemValue="idMunicipio" itemLabel="nombre"/>
                         </form:select>
@@ -201,4 +201,19 @@
             </form:form>
     
 </section>
+<script>
+    // funcion para recuperar los municipios de cada estado
+    $('.estado').on('change', function ( event){
+        let lista=$( event.target );
+        $.get('<c:url value="/" />getmunicipios',{idestado:lista.val()}, function(data) {
+                var options = $("#municipios_edo1");
+                options.empty();
+                options.append($("<option />").val('').text('--- Seleccione ---'));
+                $.each(data, function(id, item) {
+                    options.append($("<option />").val(item.idMunicipio).text(item.nombre));
+                });
+            }
+        );
+    });
+</script>
 <%@ include file = "../../layout/footer.jsp" %>

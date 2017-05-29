@@ -5,6 +5,7 @@
  */
 package mx.edu.ux.congresos.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -35,6 +36,8 @@ public class Municipio implements Serializable {
     @Column(name = "nombre")
     private String nombre;
     @JoinColumn(name = "id_estado", referencedColumnName = "id_estado")
+    
+    @JsonIgnore
     @ManyToOne(optional = false)
     private Estado idEstado;
 

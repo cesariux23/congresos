@@ -6,6 +6,7 @@
 package mx.edu.ux.congresos.dao;
 
 import java.util.List;
+import mx.edu.ux.congresos.model.Estado;
 
 import mx.edu.ux.congresos.model.Municipio;
 
@@ -15,4 +16,6 @@ public interface MunicipioDAO {
     void saveMunicipio(Municipio municipio);
     
     List findAllMunicipio(); 
+    
+    List findByEstado(Estado estado);
 }

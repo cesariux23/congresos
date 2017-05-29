@@ -37,6 +37,7 @@ public class Estado implements Serializable {
     @Basic(optional = false)
     @Column(name = "nombre")
     private String nombre;
+    
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "idEstado")
     private Collection<Municipio> municipioCollection;
 

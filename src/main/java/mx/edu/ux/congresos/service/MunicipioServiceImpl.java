@@ -7,6 +7,7 @@ package mx.edu.ux.congresos.service;
 
 import java.util.List;
 import mx.edu.ux.congresos.dao.MunicipioDAO;
+import mx.edu.ux.congresos.model.Estado;
 import mx.edu.ux.congresos.model.Municipio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,10 @@ public class MunicipioServiceImpl implements MunicipioService {
     @Override
     public List<Municipio> findAllMunicipio() {
         return dao.findAllMunicipio();
+    }
+
+    public List findByEstado(Estado estado) {
+        return dao.findByEstado(estado);
     }
 
 }
