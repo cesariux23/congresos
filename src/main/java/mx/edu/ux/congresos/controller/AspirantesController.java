@@ -1,7 +1,9 @@
 package mx.edu.ux.congresos.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import mx.edu.ux.congresos.model.Aspirante;
+import mx.edu.ux.congresos.model.Estado;
 import mx.edu.ux.congresos.service.EstadoService;
 import mx.edu.ux.congresos.service.CongresoService;
 import mx.edu.ux.congresos.service.AspiranteService;
@@ -12,13 +14,16 @@ import mx.edu.ux.congresos.service.MesasService;
 import mx.edu.ux.congresos.service.MunicipioService;
 import mx.edu.ux.congresos.service.ProfesionService;
 import mx.edu.ux.congresos.service.TemaService;
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
  
+@Transactional
 @Controller
 @ComponentScan("mx.edu.ux.congresos") 
 public class AspirantesController {
@@ -74,10 +79,10 @@ public class AspirantesController {
         List costos = costoservice.findAllCosto();
         List factura = facturaservice.findAllFactura();
         List mesas = mesasservice.findAllMesas();
-        List municipios = municipioservice.findAllMunicipio();
+        Estado edo= serviceEstado.findById(aspirante.getEstado());
+        List municipios = new  ArrayList(edo.getMunicipioCollection());
         List profesion = profesionservice.findAllProfesion();
         List temas = temaservice.findAllTema();
-        
         model.addAttribute("congresos", congresos);
         model.addAttribute("estados", estados);
         model.addAttribute("aspirante", aspirante);

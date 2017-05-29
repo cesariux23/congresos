@@ -18,7 +18,7 @@ public class MunicipioDAOImpl extends AbstractDAO<Integer, Municipio> implements
 	public Municipio findById(int id) {
 		return getByKey(id);
 	}
-
+        
 	@Override
 	public void saveMunicipio(Municipio municipio) {
 		

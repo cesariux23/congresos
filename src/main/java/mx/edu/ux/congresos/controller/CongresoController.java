@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
  
 /*
@@ -16,7 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
  *
 */
 
-
+//Se habilita las transsacciones de hibernate
+@Transactional
 //se devine como un controlador
 @Controller
 //se indica el paquete que contiene los componentes

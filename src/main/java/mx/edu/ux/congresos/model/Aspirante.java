@@ -364,6 +364,15 @@ public class Aspirante implements Serializable {
         this.idCongreso = idCongreso;
     }
 
+    //propiedad para el formulario
+    public Integer getEstado(){
+        return 30;
+    }
+    
+    public void setEstado(Integer estado){
+        //se crea la propiedad virtual
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

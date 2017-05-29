@@ -3,7 +3,6 @@
 <section class="container">
     <h1 class="text-center">Registro de aspirante</h1>
     <form:form method="post" commandName="aspirante">
-            
             <div class="panel panel-info">
                 <div class="panel-heading"><strong>Congreso</strong></div>
             <div class="panel-body">
@@ -12,6 +11,7 @@
                         <div class="form-group">
                             <form:label path="idCongreso">Nombre de Congreso*</form:label> 
                             <form:select path="idCongreso" name="idCongreso"cssClass="form-control">
+                                <form:option value="0" label="--- Seleccione ---"/>
                                 <form:options items="${congresos}" itemValue="idCongreso" itemLabel="nombre"/>
                             </form:select>
                         </div>
@@ -77,11 +77,22 @@
                         <form:input path="cp" name = "cp"cssClass="form-control" />
                     </div>
                 </div>
+                    
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <form:label path="estado">estado*</form:label> 
+                        <form:select path="estado" name="estado" cssClass="form-control">
+                            <form:option value="0" label="--- Seleccione ---"/>
+                            <form:options items="${estados}" itemValue="idEstado" itemLabel="nombre"/>
+                        </form:select>
+                    </div>
+                </div>
                 
                 <div class="col-lg-4">
                     <div class="form-group">
                         <form:label path="idMunicipio">Municipio*</form:label> 
-                        <form:select path="idMunicipio" name="idMunicipio"cssClass="form-control">
+                        <form:select path="idMunicipio" name="idMunicipio" cssClass="form-control">
+                            <form:option value="0" label="--- Seleccione ---"/>
                             <form:options items="${municipios}" itemValue="idMunicipio" itemLabel="nombre"/>
                         </form:select>
                     </div>
@@ -130,6 +141,7 @@
                         <div class="form-group">
                             <form:label path="idCategoria">Categoria*</form:label>
                             <form:select path="idCategoria" name="idCategoria"cssClass="form-control">
+                                 <form:option value="0" label="--- Seleccione ---"/>
                                  <form:options items="${categoriaInscripcion}" itemValue="idCategoria" itemLabel="nombre"/>
                             </form:select>
                         </div>
@@ -138,6 +150,7 @@
                         <div class="form-group">
                             <form:label path="idProfesion">Profesión*</form:label> 
                             <form:select path="idProfesion" name="idProfesion"cssClass="form-control">
+                                <form:option value="0" label="--- Seleccione ---"/>
                                 <form:options items="${profesion}" itemValue="idProfesion" itemLabel="nombre"/>
                             </form:select>
                         </div> 

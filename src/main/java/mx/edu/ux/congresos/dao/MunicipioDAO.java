@@ -12,7 +12,7 @@ import mx.edu.ux.congresos.model.Municipio;
 public interface MunicipioDAO {
     Municipio findById(int id);
     
-    void saveMunicipio(Municipio employee);
- 
+    void saveMunicipio(Municipio municipio);
+    
     List findAllMunicipio(); 
 }
