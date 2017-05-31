@@ -4,8 +4,10 @@ package mx.edu.ux.congresos.controller;
 //se devine como un controlador
 
 import java.util.List;
+import mx.edu.ux.congresos.model.TipoAdministrador;
 import mx.edu.ux.congresos.model.Administrador;
 import mx.edu.ux.congresos.service.AdministradorService;
+import mx.edu.ux.congresos.service.TipoAdministradorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,8 @@ public class LoginController {
     
     AdministradorService administradorservice;
     
+    @Autowired
+    TipoAdministradorService tipoadministradorservice;
     //indice de Administrador
      //ruta para el listado Administrador
      @RequestMapping("/administradores")
