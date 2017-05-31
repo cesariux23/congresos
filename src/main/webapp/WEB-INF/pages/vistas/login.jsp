@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -11,7 +10,8 @@
     </head>
     <body>
         <h1>Login</h1>
-        <a href="<c:url value='/j_spring_security_logout'/>">Logout</a>
+        
+        <form name="f" action="<c:url value='/j_spring_security_check'/>"method='POST'>
         
          <form action="j_spring_security_check" method="post">
         user:<input type="text" name="j_username"/><br />

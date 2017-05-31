@@ -35,8 +35,5 @@ public class HomeController {
         }
         return new Object();
     }
-    @RequestMapping(value = "/admin/private", method = RequestMethod.GET)
-	public String privatePage() {
-		return "private";
-	}
+   
 }
