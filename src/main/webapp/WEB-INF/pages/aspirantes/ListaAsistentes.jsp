@@ -58,7 +58,7 @@
                          <td><c:out value="${aspirante.fechaRegistro}"/></td>
                         <td><c:out value="${aspirante.idTema}"/></td>
                          <td><c:out value="${aspirante.idProfesion}"/></td>
-                         <td><c:out value="${aspirante.idCongreso}"/></td>
+                         <td><c:out value="${aspirante.idCongreso.idCongreso}"/></td>
                         <td><c:out value="${aspirante.idMunicipio}"/></td>
                          <td><c:out value="${aspirante.idCategoria}"/></td>
                          <td><c:out value="${aspirante.folio}"/></td>

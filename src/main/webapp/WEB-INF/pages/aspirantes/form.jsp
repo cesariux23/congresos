@@ -27,21 +27,21 @@
                 <div class="col-lg-4">
                     <div class="form-group">   
                         <form:label  path="nombre">Nombre*</form:label> 
-                        <form:input path="nombre" name = "nombre" cssClass="form-control" placeholder="Nombre Completo" />
+                        <form:input path="nombre" name = "nombre" cssClass="form-control" placeholder="Nombre Completo" required="required" />
                     </div>
                 </div>
                 
                 <div class="col-lg-4">
                     <div class="form-group">
                         <form:label path="apellidoPaterno">Apellido Paterno*</form:label> 
-                        <form:input path="apellidoPaterno" name = "apellidoPaterno"cssClass="form-control" />
+                        <form:input path="apellidoPaterno" name = "apellidoPaterno"cssClass="form-control" required="required"/>
                     </div> 
                 </div>
                 
                 <div class="col-lg-4">
                     <div class="form-group">
                         <form:label path="apellidoMaterno">Apellido Materno*</form:label> 
-                        <form:input path="apellidoMaterno" name = "apellidoMaterno"cssClass="form-control" />
+                        <form:input path="apellidoMaterno" name = "apellidoMaterno"cssClass="form-control" required="required" />
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                 <div class="col-lg-4">
                     <div class="form-group">
                         <form:label path="idMunicipio">Municipio*</form:label> 
-                        <form:select path="idMunicipio" name="idMunicipio" cssClass="form-control" id="municipios_edo1">
+                        <form:select path="idMunicipio" name="idMunicipio" cssClass="form-control" id="municipios_edo1" required="required">
                             <form:option value="0" label="--- Seleccione ---"/>
                             <form:options items="${municipios}" itemValue="idMunicipio" itemLabel="nombre"/>
                         </form:select>
@@ -128,19 +128,19 @@
                     <div class="col-lg-4">
                         <div class="form-group">
                             <form:label path="correo">E-mail*</form:label> 
-                            <form:input path="correo" name = "correo"cssClass="form-control" />
+                            <form:input path="correo" name = "correo"cssClass="form-control" required="required"/>
                         </div>
                     </div>
                 </div>
             </div>
            
             <div class="panel panel-info">
-                <div class="panel-heading"><strong>Profesion</strong></div>
+                <div class="panel-heading"><strong>Profesión</strong></div>
                 <div class="panel-body">
                     <div class="col-lg-6">
                         <div class="form-group">
                             <form:label path="idCategoria">Categoria*</form:label>
-                            <form:select path="idCategoria" name="idCategoria"cssClass="form-control">
+                            <form:select path="idCategoria" name="idCategoria"cssClass="form-control" required="required">
                                  <form:option value="0" label="--- Seleccione ---"/>
                                  <form:options items="${categoriaInscripcion}" itemValue="idCategoria" itemLabel="nombre"/>
                             </form:select>
@@ -149,7 +149,7 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <form:label path="idProfesion">Profesión*</form:label> 
-                            <form:select path="idProfesion" name="idProfesion"cssClass="form-control">
+                            <form:select path="idProfesion" name="idProfesion"cssClass="form-control" required="required">
                                 <form:option value="0" label="--- Seleccione ---"/>
                                 <form:options items="${profesion}" itemValue="idProfesion" itemLabel="nombre"/>
                             </form:select>

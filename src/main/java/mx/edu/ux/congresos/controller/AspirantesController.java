@@ -2,6 +2,7 @@ package mx.edu.ux.congresos.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.Valid;
 import mx.edu.ux.congresos.model.Aspirante;
 import mx.edu.ux.congresos.model.Estado;
 import mx.edu.ux.congresos.service.EstadoService;
@@ -21,7 +22,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMethod;
  
 @Transactional
 @Controller
@@ -70,7 +74,7 @@ public class AspirantesController {
         return "aspirantes/view";   
     }
     
-    @RequestMapping("/aspirantes/registro")
+    @RequestMapping( value="/aspirantes/registro" , method = RequestMethod.GET )
     public String register(Model model) {
         Aspirante aspirante = new Aspirante();
         List estados = estadoService.findAllEstados();
@@ -94,5 +98,19 @@ public class AspirantesController {
         model.addAttribute("profesion", profesion);
         model.addAttribute("temas", temas);
         return "aspirantes/form";   
+    }
+    
+    @RequestMapping( value="/aspirantes/registro" , method = RequestMethod.POST)
+      public String saveAspirante(@Valid Aspirante aspirante, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            System.err.println(result);
+	    return "aspirantes/form";
+	}
+        else{
+            aspiranteService.saveAspirante(aspirante);
+            System.out.println("******************************* Aspirante nuevo ************************");
+            System.out.println(aspirante);
+            return "aspirantes/ListaAsistentes";
+        }
     }
 }

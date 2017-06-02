@@ -4,6 +4,10 @@ import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
+import mx.edu.ux.congresos.converter.IdCongresoToCongresoConverter;
+import mx.edu.ux.congresos.service.CongresoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.FormatterRegistry;
  
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
@@ -12,8 +16,8 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.DispatcherServlet;
 
 public class SpringWebAppInitializer implements WebApplicationInitializer {
-
-	@Override
+    
+    @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
         appContext.register(ApplicationContextConfig.class);
@@ -35,5 +39,4 @@ public class SpringWebAppInitializer implements WebApplicationInitializer {
         fr.setInitParameter("forceEncoding", "true");
         fr.addMappingForUrlPatterns(null, true, "/*");
     }
-    
 }

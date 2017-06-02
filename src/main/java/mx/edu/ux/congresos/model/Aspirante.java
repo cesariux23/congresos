@@ -13,6 +13,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,8 +24,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
@@ -58,18 +64,22 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Aspirante.findByAsistio", query = "SELECT a FROM Aspirante a WHERE a.asistio = :asistio")})
 public class Aspirante implements Serializable {
     private static final long serialVersionUID = 1L;
+    @NotNull
     @Basic(optional = false)
     @Column(name = "id_aspirante")
     private int idAspirante;
     @Id
     @Basic(optional = false)
-    @Column(name = "clave_aspirante")
+    @Column(name = "clave_aspirante", unique=true, nullable = false)
     private String claveAspirante;
+    @NotEmpty
     @Basic(optional = false)
     @Column(name = "nombre")
     private String nombre;
+    @NotEmpty
     @Column(name = "apellido_paterno")
     private String apellidoPaterno;
+    @NotEmpty
     @Column(name = "apellido_materno")
     private String apellidoMaterno;
     @Column(name = "calle")
@@ -84,6 +94,8 @@ public class Aspirante implements Serializable {
     private String telefono;
     @Column(name = "celular")
     private String celular;
+    @NotEmpty
+    @Email
     @Basic(optional = false)
     @Column(name = "correo")
     private String correo;
@@ -108,12 +120,15 @@ public class Aspirante implements Serializable {
     private Date fechaRegistro;
     @Column(name = "id_tema")
     private Integer idTema;
+    @Min(1)
     @Basic(optional = false)
     @Column(name = "id_profesion")
     private int idProfesion;
+    @Min(1)
     @Basic(optional = false)
     @Column(name = "id_municipio")
     private int idMunicipio;
+    @Min(1)
     @Basic(optional = false)
     @Column(name = "id_categoria")
     private int idCategoria;
@@ -125,6 +140,7 @@ public class Aspirante implements Serializable {
     private Collection<Factura> facturaCollection;
     @JoinColumn(name = "id_congreso", referencedColumnName = "id_congreso")
     @ManyToOne(optional = false)
+    @NotNull
     private Congreso idCongreso;
 
     public Aspirante() {

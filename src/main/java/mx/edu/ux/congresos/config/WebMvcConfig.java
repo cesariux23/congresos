@@ -1,6 +1,10 @@
 package mx.edu.ux.congresos.config;
 
+import mx.edu.ux.congresos.converter.IdCongresoToCongresoConverter;
+import mx.edu.ux.congresos.service.CongresoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -9,6 +13,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 @EnableWebMvc
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
+    
+    @Autowired
+    CongresoService congresoservice;
  
     // Static Resource Config 
     @Override
@@ -21,5 +28,10 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
-    } 
+    }
+    
+    @Override
+    public void addFormatters (FormatterRegistry registry) {
+        registry.addConverter(new  IdCongresoToCongresoConverter(congresoservice));
+    }
 }
